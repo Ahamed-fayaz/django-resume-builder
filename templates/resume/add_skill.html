@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Skills</title>
+
+    <link rel="stylesheet" href="{% static 'resume/css/form.css' %}">
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h2>Add Skills</h2>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <label>Languages</label>
+            <textarea
+                name="languages"
+                placeholder="Python, Java, JavaScript"
+                rows="3"></textarea>
+            
+
+            <label>Frontend</label>
+            <textarea
+                name="frontend"
+                placeholder="HTML, CSS, Bootstrap, JavaScript"
+                rows="3"></textarea>
+            
+
+            <label>Backend</label>
+            <textarea
+                name="backend"
+                placeholder="Django, REST API"
+                rows="3"></textarea>
+           
+
+            <label>Database</label>
+            <textarea
+                name="database"
+                placeholder="MySQL, PostgreSQL"
+                rows="3">
+            </textarea>
+
+            <label>Tools</label>
+            <textarea
+                name="tools"
+                placeholder="Git, GitHub, VS Code"
+                rows="3"></textarea>
+
+            <label>Methodologies</label>
+            <textarea
+                name="methodologies"
+                placeholder="Agile, Scrum"
+                rows="3">
+            </textarea>
+
+            <div class="button-group">
+                <button type="submit">Submit</button>
+                <a href="{% url 'resume_detail' resume.id %}" class="back-button">Back</a>
+            </div>
+
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'resume/css/resume_preview.css' %}">
+
+    <title>{{ resume.full_name }} - Resume</title>
+</head>
+
+<body>
+
+    <!-- ------------- Header Section ------------------ -->
+
+    <div class="resume">
+
+        <div class="header">
+            <h1 class="name">{{ resume.full_name }}</h1>
+            <h3 class="designation">{{ resume.designation }}</h3>
+        </div>
+
+        <div class="contact-info">
+
+            <span class="contact-item">
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+                    <path
+                        d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791" />
+                </svg>
+                <a class="mail" href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+            </span>
+
+            <span class="contact-item">
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                </svg>
+                <a href="tel:{{ resume.phone }}">{{ resume.phone }}</a>
+            </span>
+
+            <span class="contact-item location linkedin-item">
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>{{ resume.location }}</span>
+
+            <span class="contact-item">
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                </svg>
+                <a href="{{ resume.linkedin }}">LinkedIn</a>
+            </span>
+
+            <span class="contact-item linkedin-item">
+                <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-git" viewBox="0 0 16 16">
+                    <path
+                        d="M15.698 7.287 8.712.302a1.03 1.03 0 0 0-1.457 0l-1.45 1.45 1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.224 1.224 0 0 1 1.267 2.025 1.226 1.226 0 0 1-2.002-1.334L8.58 5.963v4.353a1.226 1.226 0 1 1-1.008-.036V5.887a1.226 1.226 0 0 1-.666-1.608L5.093 2.465l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.03 1.03 0 0 0 0-1.457" />
+                </svg>
+                <a href="{{ resume.github}}">Github</a>
+            </span>
+
+        </div>
+
+
+        <!-- ------------- Summary Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Summary</h3>
+            <hr>
+
+            <p class="summary">
+                {{ resume.summary }}
+            </p>
+        </div>
+
+
+        <!-- ------------- Skills Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Skills</h3>
+            <hr>
+
+            <ul class="skills-list">
+                {% for category, skill in categories.items %}
+                <li class="skills">
+                    <strong>{{ category|title }}:</strong>
+                    {{ skill }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <!-- ------------- Experience Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Experience</h3>
+            <hr>
+
+            {% for exp in experiences %}
+
+            <div class="experience-header">
+
+                <div class="company">
+                    <strong>
+                        {{ exp.role }} - {{ exp.company }}
+                    </strong>
+                </div>
+
+                <div>
+                    <strong>
+                        {{ exp.start_date }} to {{ exp.end_date }}
+                    </strong>
+                </div>
+
+            </div>
+
+            <ul class="experience-points">
+                {% for point in exp.points %}
+                <li class="points">{{ point }}</li>
+                {% endfor %}
+            </ul>
+
+            {% endfor %}
+        </div>
+
+
+        <!-- ------------- Project Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Projects</h3>
+            <hr>
+
+            {% for project in projects %}
+
+            <div class="project-title">
+                <strong>
+                    {{ project.name }} ({{ project.tools }})
+                </strong>
+            </div>
+
+            <ul class="project-points">
+                {% for points in project.points %}
+                <li class="points">{{ points }}</li>
+                {% endfor %}
+            </ul>
+
+            {% endfor %}
+        </div>
+
+
+        <!-- ------------- Education Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Education</h3>
+            <hr>
+
+            {% for edu in educations %}
+
+            <div class="education">
+                <strong>
+                    {{ edu.degree }} - {{ edu.course }}
+                </strong>
+
+                <p class="college">
+                    {{ edu.college }} | {{ edu.completed_year }} | {{ edu.grade }}
+                </p>
+            </div>
+
+            {% endfor %}
+        </div>
+
+
+        <!-- ------------- Certifications Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Certifications</h3>
+            <hr>
+
+            <ul class="certifications">
+                {% for cert in certifications %}
+                <li class="cert-name">{{ cert.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <!-- ------------- Languages Section ------------------ -->
+
+        <div class="section">
+            <h3 class="section-title">Languages</h3>
+            <hr>
+
+            <ul class="languages">
+                {% for lang in languages %}
+                <li class="lang-name">{{ lang.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="">
+            <a href="{% url 'resume_pdf' resume.id %}"><button type="submit"
+                    class="btn btn-primary m-3">Download</button></a>
+            <a href="{% url 'resume_list' %}">
+                <button type="button">Back</button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Experience</title>
+    <link rel="stylesheet" href="{% static 'resume/css/form.css' %}">
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h2>Add Experience</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Company</label>
+        <input type="text" name="company" placeholder="Enter company name">
+
+        <label>Role</label>
+        <input type="text" name="role" placeholder="Enter your role">
+
+        <label>Start Date</label>
+        <input type="text" name="start_date" placeholder="Enter start date">
+
+        <label>End Date</label>
+        <input type="text" name="end_date" placeholder="Enter end date">
+
+        <label>Role Description</label>
+        <textarea name="role_description"
+                  placeholder="One responsibility per line"></textarea>
+
+        <div class="button-group">
+                <button type="submit">Update</button>
+                <a href="{% url 'resume_detail' resume.id %}" class="back-button">Back</a>
+            </div>
+    </form>
+
+</div>
+
+</body>
+</html>

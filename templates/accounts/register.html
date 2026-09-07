@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="{% static 'accounts/auth.css' %}">
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <h2>Create Account</h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    Register
+                </button>
+
+            </form>
+
+            <p>
+                Already have an account?
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

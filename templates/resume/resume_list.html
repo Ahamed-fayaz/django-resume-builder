@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h2 class="fw-bold text-center mb-0">
+                Resume List
+            </h2>
+        </div>
+
+        <div class="card-body">
+
+            {% if user.is_authenticated %}
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0">
+                        Welcome, {{ user.username }}!
+                    </h5>
+
+                    <a href="{% url 'resume' %}" class="btn btn-warning fw-bold">
+                        + Add Resume
+                    </a>
+                </div>
+            {% endif %}
+
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+
+            {% if resumes %}
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle text-center">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>SI.No</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>View</th>
+                                <th>Preview</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for resume in resumes %}
+
+                            <tr>
+
+                                <td>
+                                    {{ forloop.counter }}
+                                </td>
+
+                                <td class="fw-bold">
+                                    {{ resume.full_name }}
+                                </td>
+
+                                <td>
+                                    {{ resume.email }}
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="{% url 'resume_detail' resume.id %}"
+                                        class="btn btn-primary btn-sm"
+                                    >
+                                        View
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="{% url 'resume_preview' resume.id %}"
+                                        class="btn btn-info btn-sm"
+                                    >
+                                        Preview
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="{% url 'edit_resume' resume.id %}"
+                                        class="btn btn-success btn-sm"
+                                    >
+                                        Edit
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <form
+                                        method="post"
+                                        action="{% url 'delete_resume' resume.id %}"
+                                    >
+                                        {% csrf_token %}
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-danger btn-sm"
+                                        >
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            {% else %}
+
+                <div class="text-center py-5">
+
+                    <h5 class="text-muted">
+                        No resumes created yet.
+                    </h5>
+
+                    <a
+                        href="{% url 'resume' %}"
+                        class="btn btn-warning fw-bold mt-3"
+                    >
+                        Create Your First Resume
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="card-footer text-end">
+
+            <a href="{% url 'logout' %}" class="btn btn-secondary">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

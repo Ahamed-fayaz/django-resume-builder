@@ -1,0 +1,138 @@
+body {
+    background-color: #f4f6f8;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+
+.form-container h2,
+.form-container h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Labels */
+
+.form-container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* Input and Textarea */
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.form-container textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Input Focus */
+
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.15);
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.form-container .button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+/* Submit Button */
+
+.form-container .button-group button[type="submit"] {
+    width: auto;
+    margin: 0;
+    padding: 11px 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-container .button-group button[type="submit"]:hover {
+    background-color: #0b5ed7;
+}
+
+
+/* Back Button */
+
+.form-container .button-group a.back-button {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 11px 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6c757d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.form-container .button-group a.back-button:hover {
+    background-color: #5c636a;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 650px) {
+
+    .form-container {
+        width: 90%;
+        margin: 25px auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .form-container .button-group {
+        gap: 10px;
+    }
+
+    .form-container .button-group button[type="submit"],
+    .form-container .button-group a.back-button {
+        padding: 10px 20px;
+    }
+}

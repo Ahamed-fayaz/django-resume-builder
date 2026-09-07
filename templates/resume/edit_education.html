@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Education</title>
+    <link rel="stylesheet" href="{% static 'resume/css/form.css' %}">
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h2>Edit Education</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label>Degree</label>
+            <input type="text" name="degree" value="{{ education.degree }}">
+
+            <label>Course</label>
+            <input type="text" name="course" value="{{ education.course }}">
+
+            <label>College</label>
+            <input type="text" name="college" value="{{ education.college }}">
+
+            <label>Completed Year</label>
+            <input type="text" name="year" value="{{ education.completed_year }}">
+
+            <label>Grade</label>
+            <input type="text" name="grade" value="{{ education.grade }}">
+
+
+            <div class="button-group">
+
+                <button type="submit">Update</button>
+
+                <a href="{% url 'resume_detail' education.resume.id %}" class="back-button">
+                    Back
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

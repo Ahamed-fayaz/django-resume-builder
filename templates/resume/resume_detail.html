@@ -1,0 +1,228 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Detail</title>
+</head>
+
+<body> -->
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">Resume Details</h3>
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover align-middle">
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td>{{ resume.full_name }}</td>
+            </tr>
+
+            <tr>
+                <td>Email</td>
+                <td>{{ resume.email }}</td>
+            </tr>
+
+            <tr>
+                <td>Designation</td>
+                <td>{{ resume.designation }}</td>
+            </tr>
+
+            <tr>
+                <td>Phone</td>
+                <td>{{ resume.phone }}</td>
+            </tr>
+
+            <tr>
+                <td>LinkedIn</td>
+                <td>{{ resume.linkedin }}</td>
+            </tr>
+
+            <tr>
+                <td>Github</td>
+                <td>{{ resume.github }}</td>
+            </tr>
+
+            <tr>
+                <td>Location</td>
+                <td>{{ resume.location }}</td>
+            </tr>
+
+            <tr>
+                <td>Summary</td>
+                <td>{{ resume.summary }}</td>
+            </tr>
+            <tr id="education">
+                <td>Education</td>
+                <td>
+                    {% for edu in educations %}
+                    <strong>Degree: </strong>{{edu.degree}}<br>
+                    <strong>Course: </strong>{{edu.course}}<br>
+                    <strong>Completed year: </strong>{{edu.completed_year}}<br>
+                    <strong>Grade: </strong>{{edu.grade}}<br>
+                    <strong>College: </strong>{{edu.college}}<br>
+                    <a href="{% url 'edit_ed' edu.id %}">
+                        <button class="btn btn-primary btn-sm mt-3 my-2">Edit</button>
+                    </a>
+                    <form method="post" action="{% url 'del_ed' edu.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger btn-sm mt-2">Delete</button>
+                        </a>
+                    </form>
+                    <hr>
+                    {% empty %}
+                    No education added yet.
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="{% url 'add_ed' resume.id %}">
+                        <button class="btn btn-success btn-sm">Add Education</button>
+                    </a>
+
+                </td>
+            </tr>
+            <tr id="project">
+                <td>Projects</td>
+                <td>
+                    {% for proj in projects %}
+                    <strong>Name: </strong>{{proj.name}}<br>
+                    <strong>Description: </strong>{{proj.description}}<br>
+                    <strong>Tools: </strong>{{proj.tools}}<br>
+                    <a href="{% url 'edit_proj' proj.id %}">
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                    </a>
+                    <a href="{% url 'del_proj' proj.id %}">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </a>
+                    <hr>
+                    {% empty %}
+                    No project added yet.
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="{% url 'add_proj' resume.id %}">
+                        <button class="btn btn-success btn-sm">Add Project</button>
+                    </a>
+
+                </td>
+            </tr>
+            <tr id="experience">
+
+                <td>Experience</td>
+                <td>
+                    {% for exp in experience %}
+                    <div class="m-2 p-2 border border-primary border-sm rounded-top rounded-bottom bg-light shadow">
+                        <strong>Company name: </strong>{{exp.company}}<br>
+                        <strong>Role: </strong>{{exp.role}}<br>
+                        <strong>Start date:</strong>{{exp.start_date}}<br>
+                        <strong>End date:</strong>{{exp.end_date}}<br>
+                        <strong>Role description:</strong>{{exp.role_description}}<br>
+                        <a href="{% url 'edit_exp' id=exp.id %}" class="btn btn-primary btn-sm mt-2">Edit</a>
+                        <a href="{% url 'del_exp' id=exp.id %}" class="btn btn-danger btn-sm mt-2">Delete</a>
+                        <!-- <hr> -->
+                    </div>
+                    {% empty %}
+                    No experience added yet.
+                    {% endfor %}
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="{% url 'add_exp' resume.id %}">
+                        <button class="btn btn-success btn-sm">Add Experience</button>
+                    </a>
+                </td>
+            </tr>
+            <tr id="skills">
+                <td>Skills</td>
+                <td>
+                    {% for category, skill in categories.items %}
+                    <strong>{{category|title}} : </strong>{{skill}}<br>
+                    {% empty %}
+                    No skills added yet.
+                    {% endfor %}
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="{% url 'add_skills' id=resume.id %}"><button class="btn btn-success btn-sm">Add
+                            skills</button></a>
+                    <a href="{% url 'edit_skills' id=resume.id %}"><button
+                            class="btn btn-primary btn-sm">Edit</button></a>
+                </td>
+            </tr>
+
+            <tr id="certification">
+                <td>Certifications</td>
+                <td>
+                    {% for cert_name in certs %}
+                    {{cert_name.name}}
+                    <!-- <a href="{% url 'delete_certs' id=cert_name.id %}"><button class="btn btn-danger btn-sm">Delete</button></a> -->
+                    <br>
+                    {% empty %}
+                    No skills added yet.
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="{% url 'add_certs' id=resume.id %}"><button class="btn btn-success btn-sm">Add
+                            certifications</button></a>
+                    <a href="{% url 'edit_certs' id=resume.id %}"><button
+                            class="btn btn-primary btn-sm">Edit</button></a>
+                </td>
+            </tr>
+
+            <tr id="language">
+                <td>Languages</td>
+                <td>
+                    {% for object in languages %}
+                    {{object.name}}
+                    <br>
+                    {% empty %}
+                    No Languages added yet.
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="{% url 'add_lan' id=resume.id %}"><button class="btn btn-success btn-sm">Add</button></a>
+                    <a href="{% url 'edit_lan' id=resume.id %}"><button class="btn btn-primary btn-sm">Edit</button></a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+<div class="container d-flex justify-content-start">
+    <a href="{% url 'resume_list' %}"><button type="submit" class="btn btn-primary m-3">Back</button></a>
+</div>
+
+
+
+{% endblock %}
+<!-- </body>
+
+</html> -->

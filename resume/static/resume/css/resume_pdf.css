@@ -1,0 +1,162 @@
+@page {
+    size: A4;
+    margin: 10mm;
+}
+
+/* .resume {
+    width: 190mm;
+    min-height: 277mm;
+    margin: 10mm auto;
+    box-sizing: border-box;
+} */
+
+/* @font-face {
+    font-family: 'Merriweather';
+    src: url('{% static "resume/fonts/Merriweather-Italic-VariableFont_opsz_wdth_wght.ttf" %}') format('truetype-variations');
+    font-style: italic;
+    font-weight: 1 999; /* variable fonts can take a weight range instead of one fixed number 
+} */
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.15;
+    margin: 0;
+}
+hr{
+    margin: 0 0 8px 0;
+
+ }
+h3{
+     margin: 0px 0 0px 0;
+}
+
+ /* --------- Header Section ----------- */
+.header{
+    text-align: center;
+    text-transform: uppercase;
+    margin:0;
+}
+.name{
+    margin: 0 0 8px 0;
+    color: maroon;
+}
+.designation{
+    color: maroon;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 10px 0 5px 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.icon-svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-right: 2px;
+}
+
+.location {
+    text-transform: capitalize;
+    margin-left: 0;
+}
+
+/* .location .icon-svg,
+.linkedin-item .icon-svg {
+    margin-right: -4px;
+} */
+
+
+/* ---------Summary---------- */
+
+
+.section-title{
+    margin: 10px 0 5px 5px;
+    color: maroon;
+ }
+.summary{
+    margin-left: 10px;
+    text-align: justify;
+}
+
+/* ---------Skills---------- */
+
+.skills-list{
+    margin: 0 0 8px 3px;
+    padding-left: 5px;
+    list-style: none;
+}
+.skills{
+    margin: 3px 0 5px 5px;
+    text-transform: capitalize;
+    padding: 1px;   
+}
+
+/* ---------Experience---------- */
+
+.experience-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 2px 10px;
+}
+.experience-points{
+    margin: 2px 0 4px 25px;
+    padding: 2px;
+}
+.points{
+    padding: 2px;
+}
+.company{
+    text-transform: capitalize;
+}
+
+/* ---------Projects---------- */
+.project-points{
+    padding: 0 0 2px 0;
+    margin: 2px 0 4px 25px;
+}
+.project-title{
+    margin: 0px 0 2px 10px;
+}
+
+/* ---------Education---------- */
+
+.education{
+    margin: 0 0 8px 10px;
+}
+.college{
+    margin: 3px 0 15px 0;
+}
+
+/* ---------Certification---------- */
+.certifications{
+    margin: 0 0 8px 20px;
+    padding: 0px;
+}
+.cert-name{
+    padding: 2px;
+}
+
+/* ---------Languages---------- */
+.languages{
+    margin: 0 0 8px 20px;
+    padding: 0px;
+}
+.lang-name{
+    padding: 2px;
+}

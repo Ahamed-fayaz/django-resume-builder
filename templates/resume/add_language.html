@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Languages</title>
+
+    <link rel="stylesheet" href="{% static 'resume/css/form.css' %}">
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h2>Add Languages</h2>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <label>Languages</label>
+
+            <textarea
+                name="languages"
+                rows="5"
+                placeholder="Enter languages separated by commas"
+            ></textarea>
+
+            <div class="button-group">
+
+                <button type="submit">
+                    Add
+                </button>
+
+                <a
+                    href="{% url 'resume_detail' resume.id %}"
+                    class="back-button"
+                >
+                    Back
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
