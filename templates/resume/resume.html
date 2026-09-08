@@ -1,31 +1,62 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'resume/css/form.css' %}">
+
+    <title>Create Resume</title>
 </head>
+
 <body>
-    <h2>Resume</h2>
-    <form  method="post">
-        {% csrf_token %}
-        <label>Name</label>
-        <input type="text" name="fullname" placeholder="name">
-        <label>Designation</label>
-        <input type="text" name="designation" placeholder="enter designation">
-        <label>Email</label>
-        <input type="text" name="email" placeholder="email">
-        <label>Phone num: </label>
-        <input type="number" name="phone" placeholder="phone number">
-        <label>LinkedIn: </label>
-        <input type="text" name="linkedin" placeholder="">
-        <label>Github: </label>
-        <input type="text" name="github">
-        <label>Location: </label>
-        <input type="text" name="location">
-        <label>Summary: </label>
-        <input type="text" name="summary">
-        <button type="submit">Submit</button>
-    </form>
+
+    <div class="form-container">
+
+        <h2>Create Resume</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label>Name</label>
+            <input type="text" name="fullname" placeholder="Enter name">
+
+            <label>Designation</label>
+            <input type="text" name="designation" placeholder="Enter designation">
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter email">
+
+            <label>Phone Number</label>
+            <input type="text" name="phone" placeholder="Enter phone number">
+
+            <label>LinkedIn</label>
+            <input type="text" name="linkedin" placeholder="https://www.linkedin.com/in/your-name">
+
+            <label>GitHub</label>
+            <input type="text" name="github" placeholder="https://github.com/your-username">
+
+            <label>Location</label>
+            <input type="text" name="location" placeholder="Enter location">
+
+            <label>Summary</label>
+            <textarea name="summary" placeholder="Enter your professional summary"></textarea>
+
+            <div class="button-group">
+                <button type="submit">Create Resume</button>
+
+                <a href="{% url 'resume_list' %}" class="back-button">
+                    Back
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
 </body>
+
 </html>
